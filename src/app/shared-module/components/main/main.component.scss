@@ -1,5 +1,47 @@
 nav{
+  #logo{
+    width: 50px;
+    height: 50px;
+  }
+  flex-direction: row;
   background-color: var(--accent-color);
-  color: (--primary-color);
-  height: 15px;
+    display: flex;
+    padding: 15px;
+    justify-content: space-between;
+  ul.navigation-url {
+    display: flex;
+    list-style-type: none;
+    flex-direction: row;
+    gap: 15px;
+    li {
+        a{
+        color: white;
+        font-family:"Lato-Bold" ;
+        text-decoration: none;
+        }
+      }
+  }
+  .mat-icon {
+  font-size: 32px; /* Increase size as needed */
+  width: 32px;     /* Optional: Matches the icon's width */
+  height: 32px;    /* Optional: Matches the icon's height */
+  line-height: 32px;
+  color:var(--text-color);
+}
+
+/* Optional: Adjust button size */
+button[mat-button] {
+  min-width: 0;
+  padding: 8px;
+}
+}
+li.collpase-link {
+    text-align: center;
+    padding: 5px;
+    font-size: 15px;
+    a{
+      font-family:"Lato-Bold";
+      text-decoration: none;
+      color:#000
+    }
 }

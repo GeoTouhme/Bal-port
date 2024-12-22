@@ -1,0 +1,27 @@
+<div class="top-cover">
+  <div class="text">
+    <h2>Unleash Your Inner Bartender – Discover Your Next Favorite Drink.</h2>
+    <button class="mat-button" mat-raised-button> Top selling </button>
+  </div>
+
+</div>
+<div class="slider">
+  <div class="text-wrapper">
+    <h1>Top Rated </h1>
+  </div>
+  <div>
+    <button (click)="goToPrevious()" mat-raised-button class="leftArrow">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <button (click)="goToNext()" mat-raised-button class="rightArrow">
+      <mat-icon>arrow_forward</mat-icon>
+    </button>
+  </div>
+  <div class="slide" [ngStyle]="{ 'background-image': getCurrentSlideUrl() }"></div>
+  <div class="dotsContainer">
+    <div *ngFor="let slide of slides; let slideIndex = index" [ngClass]="{'active':currentIndex==slideIndex,'dot':1}"
+      (click)="goToSlide(slideIndex)">
+      <mat-icon>circle</mat-icon>
+    </div>
+  </div>
+</div>

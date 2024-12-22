@@ -1,2 +1,21 @@
-<mat-icon></mat-icon>
+<nav class="main-nav">
+  <img src="assets/images/Bal-port.jpg" id="logo" />
+  <ul class="navigation-url" *ngIf="!isResponsive">
+    <li routerLink="/home"><a>Home</a></li>
+    <li><a routerLink="/about">About</a></li>
+    <li><a href="/cart">Cart</a></li>
+    <li><a href="/login">Login</a></li>
+
+  </ul>
+  <ul class="navigation-url" *ngIf="isResponsive">
+    <button mat-button [matMenuTriggerFor]="menuList" matTooltip="menu"><mat-icon>menu</mat-icon></button>
+    <mat-menu #menuList="matMenu" xPosition="before" id="menu">
+      <li class="collpase-link"><a routerLink="/home">Home</a></li>
+      <li class="collpase-link"><a routerLink="/about">About</a></li>
+      <li class="collpase-link"><a href="/cart">Cart</a></li>
+      <li class="collpase-link"><a href="/login">Login</a></li>
+    </mat-menu>
+  </ul>
+</nav>
 <router-outlet></router-outlet>
+<footer></footer>

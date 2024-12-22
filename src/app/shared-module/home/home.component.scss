@@ -1,0 +1,121 @@
+.top-cover{
+  border-radius: 14px;
+  margin: 25px;
+  height: 400px;
+  background-image: url("/assets/images/glass-whiskey-alcohol-drink-wallpaper-thumb.jpg");
+  background-size: cover; /* Ensures the image covers the entire div */
+  background-position: center center; /* Centers the image */
+  background-repeat: no-repeat; /* Ensures the image doesn't repeat */
+  color: white; /* Adjust text color for readability */
+  object-fit: cover;
+    div.text{
+      position: relative;
+      top: 150px;
+       color:var(--text-color);
+      left: 20%;
+    text-align: center;
+    font-size: 34px !important;
+    white-space: normal;
+    line-height: 55px;
+    opacity: 0.8;
+    width: 50%;
+    button{
+      margin-left: 15px;
+      background-color: var(--background-color);
+      color:var(--text-color);
+    }
+   }
+
+}
+.slider {
+  position: relative;
+  height: 400px;
+  margin: 15px;
+  .text-wrapper{
+      display: flex;
+  justify-content: center;
+  h1{
+    font-family: "Lato-bold";
+
+  }
+  }
+
+  // Left and Right Arrow Styles
+  .leftArrow,
+  .rightArrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 45px;
+    color: #fff;
+    background-color: var(--accent-color);
+    z-index: 1;
+    cursor: pointer;
+
+    &:hover {
+      color: #ddd; // Hover effect for arrows
+    }
+  }
+
+  .leftArrow {
+    left: 32px;
+  }
+
+  .rightArrow {
+    right: 32px;
+  }
+
+  // Slide Animation
+  .slide {
+    width: 60%;
+    margin-left: 20%;
+    height: 100%;
+    border-radius: 10px;
+  // Ensures the image covers the entire slide
+    background-position: center ;  // Centers the background image
+    background-repeat: no-repeat;  // Prevents image repetition
+    // Ensures that the image covers the entire container
+    animation: fadeIn 0.5s ease-in-out; // Fade-in animation
+    background-size: contain;
+    box-shadow: 0px 1px 6px #00000040;
+  }
+
+  // Dots Container and Dot Styling
+  .dotsContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+
+    .dot {
+      margin: 0 5px;
+      cursor: pointer;
+      font-size: 20px;
+
+      mat-icon {
+        color: gray;
+        transition: transform 0.3s, color 0.3s; // Smooth transition for hover
+
+        &:hover {
+          transform: scale(1.2); // Scale effect on hover
+          color: var(--accent-color); // Change color on hover
+        }
+      }
+
+      &.active mat-icon {
+        color: var(--accent-color); // Change color on hover
+      }
+    }
+  }
+
+  // Animations
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95); // Slight zoom-in effect
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}

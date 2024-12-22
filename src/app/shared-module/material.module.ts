@@ -28,10 +28,16 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   exports: [
+    ReactiveFormsModule,
+    MatCardModule,
+    MatDividerModule,
+    MatFormFieldModule,
     MatToolbarModule,
+    FormsModule,    // Add FormsModule here to use ngModel
     MatIconModule,
     MatButtonModule,
     MatTooltipModule,
