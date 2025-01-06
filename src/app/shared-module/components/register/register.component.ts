@@ -1,27 +1,36 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss']
 })
-export class LoginComponent {
-  loginForm!: FormGroup;
-  loading: boolean = false
+export class RegisterComponent {
+  loading = false
+  registerForm: FormGroup;
+
+
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
-    this.loginForm = this.fb.group({
-      emailOrUsername: ['', [Validators.required]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+    this.registerForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      name: ['', Validators.required],
+      password: ['', Validators.required],
+      phone: ['', Validators.required], // Form control for phone number
     });
   }
 
-  onSubmit() {
-
-    if (this.loginForm.valid) {
-      this.authService.login(this.loginForm.value).then(response => {
+  // Handle phone input changes
+  onPhoneInputChange(event: any): void {
+    const phoneControl = this.registerForm.get('phone');
+    phoneControl?.setValue(event.target.value); // Update form control value
+    phoneControl?.markAsTouched();
+  }
+  submit() {
+    if (this.registerForm.valid) {
+      this.authService.register(this.registerForm.value).then(response => {
         if (response.success == true) {
           if (response.data != null && response.data.user != null && response.data.token != null) {
 
@@ -45,6 +54,7 @@ export class LoginComponent {
 
       });
     }
-
   }
 }
+
+

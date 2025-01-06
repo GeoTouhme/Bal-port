@@ -6,11 +6,14 @@ import { SharedModule } from './shared-module/shared-module.module';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedRoutingModule } from './shared-module/shared-routing.module';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { NgxMatIntlTelInputComponent } from 'ngx-mat-intl-tel-input';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
+
   ],
   imports: [
     AppRoutingModule,
@@ -18,10 +21,12 @@ import { FormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     BrowserModule,
     SharedModule,
-
     BrowserAnimationsModule,
+    HttpClientModule,
     AppRoutingModule,
-    SharedRoutingModule
+    NgxMatIntlTelInputComponent,
+    SharedRoutingModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

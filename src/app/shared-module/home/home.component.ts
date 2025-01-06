@@ -1,12 +1,8 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import {
-  interval,
-  Observable,
-  startWith,
-  Subject,
-  switchMap,
-  timer,
-} from 'rxjs';
+import { ProductService } from '../services/product.service';
+import { Category } from 'src/app/models/responses/CategoryResponse';
+import { Router } from '@angular/router';
+
 interface SlideInterface {
   url: string;
   title: string;
@@ -18,19 +14,25 @@ interface SlideInterface {
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, OnDestroy {
+
+  constructor(private productService: ProductService, private router: Router) { }
   slides: SlideInterface[] = [
 
   ];
-
+  isLoading: boolean = true
   currentIndex: number = 0;
   timeoutId?: number;
-
+  categories: Category[] = [];
   ngOnInit(): void {
     this.slides = [{ url: 'https://img.cdn4dd.com/p/fit=cover,width=1200,height=1200,format=auto,quality=50/media/photos/20727ada-07d4-40a5-a485-332772262515-retina-large-jpeg', title: 'beach' },
     { url: 'https://img.cdn4dd.com/p/fit=cover,width=1200,height=1200,format=auto,quality=50/media/photos/068518a7-733e-4cf5-8645-497add0a0825-retina-large-jpeg', title: 'boat' },
     { url: 'https://img.cdn4dd.com/p/fit=cover,width=1200,height=1200,format=auto,quality=50/media/photos/9573db8f-cb17-409d-b1b8-529861d9e092-retina-large-jpeg', title: 'forest' },
     { url: 'https://img.cdn4dd.com/p/fit=cover,width=1200,height=1200,format=auto,quality=50/media/photos/8a3b1a85-9e45-4d78-8b52-b1eaf33d0c96-retina-large-jpeg', title: 'city' },
     ]
+    this.productService.getItems().then((response) => {
+      this.categories = response.data!
+    })
+    this.isLoading = false;
     this.resetTimer();
   }
   ngOnDestroy() {
@@ -69,4 +71,5 @@ export class HomeComponent implements OnInit, OnDestroy {
   getCurrentSlideUrl() {
     return `url('${this.slides[this.currentIndex].url}')`;
   }
+
 }

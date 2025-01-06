@@ -25,3 +25,19 @@
     </div>
   </div>
 </div>
+<div class="tab-container" *ngIf="!isLoading">
+  <mat-tab-group>
+    <mat-tab *ngFor="let category of categories" [label]="category.name">
+      <div class="tab-content">
+        <div class="item-card" *ngFor="let item of category.items" [routerLink]="['/product', item._id]">
+
+          <img [src]="item.image" alt="{{ item.name }}" />
+          <div class="item-details">
+            <p>{{ item.price }}</p>
+          </div>
+
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

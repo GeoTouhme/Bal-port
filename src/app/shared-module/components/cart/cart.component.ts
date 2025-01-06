@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { CartService } from '../../services/cart.service';
+import { ProductService } from '../../services/product.service';
+import { CartProductResponse } from 'src/app/models/responses/CartProductResponse';
 
 
 @Component({
@@ -8,23 +10,22 @@ import { CartService } from '../../services/cart.service';
   styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent {
-  cart: any[] = [];
-
-  constructor(private cartService: CartService) {
-    this.cart = this.cartService.getCart();
+  loading: boolean = true;
+  cart!: CartProductResponse
+  constructor(private productService: ProductService) {
+    this.productService.getCart().then((res) => {
+      this.cart = res.data!
+    });
+    this.loading = false
   }
+  removeFromCart(id: string) {
 
-  removeFromCart(productId: number) {
-    this.cartService.removeFromCart(productId);
-    this.cart = this.cartService.getCart();
   }
+  updateQuantity(sag: any, a: any) {
 
-  updateQuantity(productId: number, quantity: number) {
-    this.cartService.updateQuantity(productId, quantity);
-    this.cart = this.cartService.getCart();
   }
-
   getTotal() {
-    return this.cartService.getTotal();
+    return 500
   }
+
 }

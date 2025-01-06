@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-main',
@@ -7,6 +8,9 @@ import { Component, HostListener, OnInit } from '@angular/core';
   standalone: false
 })
 export class MainComponent implements OnInit {
+  constructor(private authservice: AuthService) {
+
+  }
   public isResponsive: boolean = false;
   checkResponsive() {
     this.isResponsive = window.innerWidth <= 768;  // Set max-width as 768px for responsiveness
@@ -17,5 +21,8 @@ export class MainComponent implements OnInit {
   }
   ngOnInit(): void {
     this.checkResponsive();
+  }
+  isLoggedIn() {
+    return this.authservice.getToken() != null
   }
 }

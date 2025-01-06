@@ -1,0 +1,30 @@
+<!-- app.component.html -->
+<div class="login-container">
+  <mat-card class="login-card">
+    <h2>Register</h2>
+    <form (ngSubmit)="submit()" [formGroup]="registerForm">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email" placeholder="Enter your email" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" type="text" placeholder="Enter your name" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" type="password" placeholder="Enter your password" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Phone</mat-label>
+        <ngx-mat-intl-tel-input [cssClass]="'custom-tel-input'" [preferredCountries]="['us', 'gb', 'fr']"
+          [enableAutoCountrySelect]="true" [enablePlaceholder]="true" [searchCountryFlag]="true" formControlName="phone"
+          [selectFirstCountry]="false"></ngx-mat-intl-tel-input>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid">
+        Register
+      </button>
+    </form>
+  </mat-card>
+</div>

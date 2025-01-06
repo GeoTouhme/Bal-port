@@ -29,7 +29,7 @@ export class User {
     }
 
     Object.entries(object).map(([key, value]) => {
-      this[key] = value;
+      (this as any)[key] = value;
     });
 
     if (this.phone?.charAt(4) == '0') {
@@ -39,7 +39,7 @@ export class User {
     return this;
   }
 
-  setCharAt(str, idx, newChr) { return str.substring(0, idx) + newChr + str.substring(idx + 1); }
+  setCharAt(str: string, idx: number, newChr: string) { return str.substring(0, idx) + newChr + str.substring(idx + 1); }
 
   public getName(): string {
     if (this.first_name && this.last_name) {

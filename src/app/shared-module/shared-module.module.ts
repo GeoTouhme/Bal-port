@@ -4,25 +4,30 @@ import { LoginComponent } from './components/login/login.component';
 import { SharedRoutingModule } from './shared-routing.module';
 import { MainComponent } from './components/main/main.component';
 import { MaterialModule } from './material.module';
-import { register } from 'swiper/element/bundle';
-import { HomeComponent } from './home/home.component';
-import { SwiperDirective } from '../highlight.directive';
-import { CartComponent } from './components/cart/cart.component';
 
-register();
+import { HomeComponent } from './home/home.component';
+
+import { CartComponent } from './components/cart/cart.component';
+import { RegisterComponent } from './components/register/register.component';
+import { NgxMatIntlTelInputComponent } from 'ngx-mat-intl-tel-input';
+import { ProductComponent } from './components/product/product.component';
+import { ProvidersModule } from './providers.module';
+
 @NgModule({
   declarations: [
+    ProductComponent,
     MainComponent,
     LoginComponent,
-    SwiperDirective,
     HomeComponent,
-    CartComponent
+    CartComponent,
+    RegisterComponent
   ],
   imports: [
     SharedRoutingModule,
     CommonModule,
     MaterialModule,
-
+    NgxMatIntlTelInputComponent,
+    ProvidersModule
   ],
   exports: [
     MaterialModule

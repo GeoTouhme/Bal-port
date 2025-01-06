@@ -4,7 +4,7 @@
     <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Email</mat-label>
-        <input matInput formControlName="email" type="email" placeholder="Enter your email" />
+        <input matInput formControlName="emailOrUsername" type="text" placeholder="Enter your email" />
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="full-width">
@@ -16,6 +16,7 @@
         Login
       </button>
       <p class="forgot-password">Forgot your password?</p>
+      <a class="forgot-password" href="/register">Not a Member? Sign up</a>
     </form>
   </mat-card>
 </div>

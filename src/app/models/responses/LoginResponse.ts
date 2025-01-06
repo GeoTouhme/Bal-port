@@ -1,6 +1,6 @@
-import { Doctor } from "../data/Doctor";
+import { User } from "../data/User";
 
 export interface LoginResposnse {
-  doctor?: Doctor;
+  user?: User;
   token?: string;
 }
